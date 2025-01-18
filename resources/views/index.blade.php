@@ -53,20 +53,14 @@
         <div class="row g-4">
             <!-- Section 1: Support Your Local Rugby Club -->
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item text-center pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-users text-primary mb-4"></i>
-                        <h5 class="mb-3">Support Your Club</h5>
-                        <p>Be part of the Portland Rugby Club's journey. Your support matters!</p>
-                    </div>
-                </div>
+
             </div>
             <!-- Section 2: Non-Profit Organization -->
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item text-center pt-3">
                     <div class="p-4">
                         <i class="fa fa-3x fa-hand-holding-heart text-primary mb-4"></i>
-                        <h5 class="mb-3">Non-Profit Status</h5>
+                        <h5 class="mb-3">Vision</h5>
                         <p>The Portland Rugby Club is a 501(c)(3) non-profit organization.</p>
                     </div>
                 </div>
@@ -76,20 +70,14 @@
                 <div class="service-item text-center pt-3">
                     <div class="p-4">
                         <i class="fa fa-3x fa-donate text-primary mb-4"></i>
-                        <h5 class="mb-3">Donate Today</h5>
+                        <h5 class="mb-3">Mission</h5>
                         <p>Your generous contributions keep our club thriving. Donate now!</p>
                     </div>
                 </div>
             </div>
             <!-- Section 4: Announcements -->
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item text-center pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-calendar-alt text-primary mb-4"></i>
-                        <h5 class="mb-3">Announcements</h5>
-                        <p>Spring 2025 practices begin January 21 at Delta Park. Stay tuned!</p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -110,28 +98,8 @@
                 <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
                 <h1 class="mb-4">Welcome to Portland Rugby Club</h1>
                 <p class="mb-4">Portland Rugby Club is a passionate community of players and fans dedicated to the sport of rugby. Whether you're a seasoned athlete or just starting, we provide opportunities for growth, teamwork, and thrilling competition.</p>
-                <p class="mb-4">Our club promotes camaraderie, discipline, and the spirit of rugby. We host regular practices, competitive matches, and community events, fostering a love for the game while building lifelong friendships.</p>
-                <div class="row gy-2 gx-4 mb-4">
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Experienced Coaches</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>State-of-the-Art Facilities</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Competitive Matches</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Community Events</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Inclusive Environment</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Youth Development Programs</p>
-                    </div>
-                </div>
-                <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+
+                <a class="btn btn-primary py-3 px-5 mt-2" href="{{route('about')}}">Read More</a>
             </div>
         </div>
     </div>
@@ -178,14 +146,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                <a class="position-relative d-block h-100 overflow-hidden" href="">
-                    <img class="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt="" style="object-fit: cover;">
-                    <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
-                        <h5 class="m-0">Portland Rugby Festival</h5>
-                        <small class="text-primary">Date: 5th September</small>
+            <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s">
+
+
+
+
+
+                    <div class="alert alert-info text-center" role="alert">
+                    <strong >ANNOUNCEMENT</strong>
                     </div>
-                </a>
+
+
+                    <div class="p-4">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <p>Conveying meaning to assistive technologies Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the .visually-hidden class.</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+
+
             </div>
         </div>
     </div>

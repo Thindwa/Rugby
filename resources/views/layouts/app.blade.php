@@ -50,7 +50,64 @@
         align-items: center;
         justify-content: center;
     }
-</style>
+
+
+        .banner {
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+        }
+
+        .banner .alert {
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 0 !important;
+        }
+
+        .banner-wrapper {
+            display: block;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .alert-custom {
+            background: #0066AA;
+            color: #fff;
+        }
+
+        .banner-link {
+            text-decoration: underline;
+            color: white;
+            transition: all .5s ease-in;
+        }
+
+        .banner-link:hover {
+            color: #f4f4f4;
+        }
+
+        .alert-dismissable .close,
+        .alert-dismissible .close {
+            position: relative;
+            top: 6px;
+            right: 20px;
+            color: inherit;
+            display: block;
+            margin: auto;
+            text-align: center;
+            color: #0066AA;
+            vertical-align: middle;
+            opacity: 1;
+            background: #fff;
+            border-radius: 50%;
+            border-radius: 80px;
+            padding: 1rem 1.5rem;
+        }
+
+        .close span {
+            top: -1.4px;
+            position: relative;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -80,6 +137,12 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+        jQuery("button.close").click(function (e) {
+            jQuery(this).parent().slideUp("slow");
+        });
+    </script>
 </body>
 
 </html>

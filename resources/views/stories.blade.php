@@ -28,7 +28,7 @@
     <div class="container">
         <div class="text-center mb-5">
             <h6 class="section-title bg-white text-center text-primary px-3">Latest Stories</h6>
-            <h1 class="mb-4">Stay Updated with Us</h1>
+
             <p class="text-muted">Explore the latest stories and insights in the world of rugby in Malawi.</p>
         </div>
         <div class="row g-4">
@@ -37,13 +37,12 @@
                 <div class="news-item bg-light shadow-sm rounded">
                     <div class="position-relative overflow-hidden">
                         <img class="img-fluid rounded-top" src="img/course-1.jpg" alt="News Image">
-                        <div class="position-absolute top-0 start-0 bg-primary text-white px-3 py-2">June 25, 2024</div>
                         <div class="read-more-overlay position-absolute top-50 start-50 translate-middle">
                             <a href="news-details-1.html" class="btn btn-primary px-4 py-2">Read More</a>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h5 class="mb-2">Portland Rugby Kicks Off New Season</h5>
+                        <h5 class="mb-2">Chisomo Thindwa: The Rugby Legend</h5>
                         <p>Join us as the season begins with thrilling matches and exciting team updates.</p>
                         <a href="news-details-1.html" class="text-primary">Read More &raquo;</a>
                     </div>
@@ -54,13 +53,12 @@
                 <div class="news-item bg-light shadow-sm rounded">
                     <div class="position-relative overflow-hidden">
                         <img class="img-fluid rounded-top" src="img/course-2.jpg" alt="News Image">
-                        <div class="position-absolute top-0 start-0 bg-primary text-white px-3 py-2">July 10, 2024</div>
                         <div class="read-more-overlay position-absolute top-50 start-50 translate-middle">
                             <a href="news-details-2.html" class="btn btn-primary px-4 py-2">Read More</a>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h5 class="mb-2">Youth Development Programs Announced</h5>
+                        <h5 class="mb-2">Rionie Thindwa: The Rugby Legend</h5>
                         <p>Discover our latest initiatives to engage young talent and foster the next generation of rugby players.</p>
                         <a href="news-details-2.html" class="text-primary">Read More &raquo;</a>
                     </div>
@@ -71,13 +69,12 @@
                 <div class="news-item bg-light shadow-sm rounded">
                     <div class="position-relative overflow-hidden">
                         <img class="img-fluid rounded-top" src="img/course-3.jpg" alt="News Image">
-                        <div class="position-absolute top-0 start-0 bg-primary text-white px-3 py-2">August 18, 2024</div>
                         <div class="read-more-overlay position-absolute top-50 start-50 translate-middle">
                             <a href="news-details-3.html" class="btn btn-primary px-4 py-2">Read More</a>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h5 class="mb-2">Upcoming Women's Rugby Events</h5>
+                        <h5 class="mb-2">Pamela Thindwa: The Rugby Lady</h5>
                         <p>Stay informed about upcoming clinics and matches dedicated to women in rugby.</p>
                         <a href="news-details-3.html" class="text-primary">Read More &raquo;</a>
                     </div>
