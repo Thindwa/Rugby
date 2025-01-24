@@ -14,3 +14,5 @@ Route::get('/news', [HomeController::class, 'news'])->name('news');
 Route::get('/events', [HomeController::class, 'events'])->name('events');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/stories', [HomeController::class, 'stories'])->name('stories');
+Route::get('/stories/{id}', [HomeController::class, 'showStory'])->name('stories.show');
+Route::get('/events/{id}', [HomeController::class, 'showEvent'])->name('events.show');

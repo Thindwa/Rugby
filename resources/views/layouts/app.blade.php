@@ -23,6 +23,7 @@
     <!-- Libraries Stylesheet -->
     <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
     <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{asset('lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -106,7 +107,38 @@
             top: -1.4px;
             position: relative;
         }
+
+         /* Reduce the height of the carousel container */
+    .owl-carousel.header-carousel {
+        height: 670px; /* Adjust this value as needed */
+    }
+
+    /* Ensure the carousel images fit within the reduced height */
+    .owl-carousel .owl-carousel-item img {
+        height: 670px; /* Match the carousel height */
+        width: 100%;
+        object-fit: cover; /* Ensure the image covers the area without distortion */
+    }
+
+    /* Adjust the overlay and content positioning */
+    .owl-carousel .owl-carousel-item .position-absolute {
+        height: 670px; /* Match the carousel height */
+    }
+
+    /* Optional: Adjust the font sizes for better proportion */
+    .owl-carousel .owl-carousel-item h1 {
+        font-size: 2.5rem; /* Adjust as needed */
+    }
+
+    .owl-carousel .owl-carousel-item h5 {
+        font-size: 1.25rem; /* Adjust as needed */
+    }
+
+    .owl-carousel .owl-carousel-item p {
+        font-size: 1rem; /* Adjust as needed */
+    }
     </style>
+
 
 </head>
 
@@ -130,6 +162,7 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
     <script src="{{asset('lib/wow/wow.min.js')}}"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
