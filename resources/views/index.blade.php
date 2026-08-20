@@ -1,181 +1,217 @@
 @extends('layouts.app')
 
+@section('title', 'Rugby For Education | Education Through Sport in Malawi')
+@section('meta_description', 'Rugby For Education supports talented young rugby players in Malawi with education, player development and community opportunity.')
+
 @section('content')
-   <!-- Carousel Start -->
-<div class="container-fluid p-0 mb-5">
-    <div class="owl-carousel header-carousel position-relative">
-        @foreach($sliders as $slider)
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{{ asset($slider->image) }}" alt="{{ $slider->title }}">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(40, 47, 86, 0.17);">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        <div class="col-sm-10 col-lg-8">
-                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">{{ $slider->sub_title }}</h5>
-                            <h1 class="display-3 text-white animated slideInDown">{{ $slider->title }}</h1>
-                            <p class="fs-5 text-white mb-4 pb-2">
-                                {!! Str::limit($slider->description, 200) !!}
-                            </p>
-                            <div class="mt-3">
-                                <a href="{{ route('stories') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Explore Stories</a>
+<main class="home-page">
+    <section class="home-hero" aria-label="Featured stories">
+        <div class="owl-carousel header-carousel home-hero__carousel">
+            @forelse($sliders as $slider)
+                <article class="home-hero__slide">
+                    <x-responsive-image path="{{ $slider->image }}" alt="{{ $slider->title }}" loading="eager" sizes="100vw" />
+                    <div class="home-hero__shade"></div>
+                    <div class="container home-hero__content-wrap">
+                        <div class="home-hero__content">
+                            @if($slider->sub_title)
+                                <span class="home-eyebrow home-eyebrow--light">{{ $slider->sub_title }}</span>
+                            @endif
+                            <h1>{{ $slider->title }}</h1>
+                            <p>{{ Str::limit(strip_tags($slider->description), 180) }}</p>
+                            <div class="home-hero__actions">
+                                <a href="{{ route('stories') }}" class="home-btn home-btn--primary">Explore our stories <i class="fa fa-arrow-right"></i></a>
+                                <a href="{{ route('about') }}" class="home-btn home-btn--ghost">Discover our mission</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </article>
+            @empty
+                <article class="home-hero__slide">
+                    <x-responsive-image path="{{ $about->image }}" alt="Rugby For Education" loading="eager" sizes="100vw" />
+                    <div class="home-hero__shade"></div>
+                    <div class="container home-hero__content-wrap">
+                        <div class="home-hero__content">
+                            <span class="home-eyebrow home-eyebrow--light">Rugby For Education</span>
+                            <h1>Opening doors through education and rugby</h1>
+                            <p>Supporting talented young players with the education, resources and opportunities they need to thrive.</p>
+                            <div class="home-hero__actions">
+                                <a href="{{ route('about') }}" class="home-btn home-btn--primary">Learn about our work</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            @endforelse
         </div>
-        @endforeach
-    </div>
-</div>
-<!-- Carousel End -->
+    </section>
 
-
-
-
- <div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-4">
-            <!-- Section 1: Support Your Local Rugby Club -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <!-- Add content here if needed -->
-            </div>
-            <!-- Section 2: Non-Profit Organization -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item text-center pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-hand-holding-heart text-primary mb-4"></i>
-                        <h5 class="mb-3">Vision</h5>
+    <section class="home-purpose" aria-label="Our purpose">
+        <div class="container">
+            <div class="home-purpose__grid">
+                <article class="home-purpose-card wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="home-purpose-card__icon"><i class="fa fa-eye"></i></div>
+                    <div>
+                        <span>Our vision</span>
+                        <h2>A fair chance for every talented young player</h2>
                         <p>{{ $about->vision }}</p>
                     </div>
-                </div>
-            </div>
-            <!-- Section 3: Donate Today -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item text-center pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-donate text-primary mb-4"></i>
-                        <h5 class="mb-3">Mission</h5>
+                </article>
+                <article class="home-purpose-card wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="home-purpose-card__icon"><i class="fa fa-graduation-cap"></i></div>
+                    <div>
+                        <span>Our mission</span>
+                        <h2>Education and sport working together</h2>
                         <p>{{ $about->mission }}</p>
                     </div>
-                </div>
-            </div>
-            <!-- Section 4: Announcements -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <!-- Add content here if needed -->
+                </article>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- About Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="{{ asset($about->image) }}" alt="Rugby Team" style="object-fit: cover;">
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                <h1 class="mb-4">{{ $about->title }}</h1>
-                <p class="mb-4">{!! Str::limit($about->description, 400) !!}</p>
-                <a href="{{ route('about') }}" id="read-more-btn" class="btn btn-primary">Read More</a>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- About End -->
-
-
-<!-- Events Start -->
-<div class="container-xxl py-5 category">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">EVENTS</h6>
-            <h1 class="mb-5">Upcoming Events</h1>
-        </div>
-        <div class="row g-3">
-            <!-- Events Section -->
-            <div class="col-lg-7 col-md-6">
-                <div class="row g-3">
-                    @foreach($events as $event)
-                    <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                        <a class="position-relative d-block overflow-hidden" href="{{ route('events.show', $event->id) }}">
-                            <img class="img-fluid" src="{{ asset($event->image) }}" alt="{{ $event->title }}">
-                            <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                <h5 class="m-0">{{ $event->title }}</h5>
-                                <small class="text-primary">
-                                    {{ \Carbon\Carbon::parse($event->start_date)->format('jS M') }} -
-                                    {{ \Carbon\Carbon::parse($event->end_date)->format('jS M') }}
-                                </small>
-                                <br>
-                                <small class="text-muted">{{ $event->location }}</small>
-                            </div>
-                        </a>
+    <section class="home-section home-about">
+        <div class="container">
+            <div class="home-about__grid">
+                <div class="home-about__media wow fadeInLeft" data-wow-delay="0.1s">
+                    <x-responsive-image path="{{ $about->image }}" alt="Rugby For Education supporting young people" loading="eager" sizes="(max-width: 991px) 100vw, 50vw" />
+                    <div class="home-about__badge">
+                        <i class="fa fa-book-open"></i>
+                        <span><strong>Education first</strong>Building brighter futures through opportunity</span>
                     </div>
+                </div>
+                <div class="home-about__content wow fadeInRight" data-wow-delay="0.1s">
+                    <span class="home-eyebrow">Who we are</span>
+                    <h2>{{ $about->title }}</h2>
+                    <p>{{ Str::limit(strip_tags($about->description), 520) }}</p>
+                    <div class="home-about__values">
+                        <div><i class="fa fa-check"></i><span>Education access</span></div>
+                        <div><i class="fa fa-check"></i><span>Player development</span></div>
+                        <div><i class="fa fa-check"></i><span>Community support</span></div>
+                    </div>
+                    <a href="{{ route('about') }}" class="home-text-link">More about our organisation <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if($announcements->isNotEmpty())
+        <section class="home-section home-announcements" id="announcements">
+            <div class="container">
+                <div class="home-section-heading">
+                    <div>
+                        <span class="home-eyebrow">Official notices</span>
+                        <h2>Announcements</h2>
+                        <p>Important notices, opportunities and programme information from Rugby For Education.</p>
+                    </div>
+                    <a href="{{ route('announcements') }}" class="home-text-link">View all announcements <i class="fa fa-arrow-right"></i></a>
+                </div>
+                <div class="home-announcement-list">
+                    @foreach($announcements as $announcement)
+                        @php
+                            $announcementText = Str::of(strip_tags($announcement->description))->replace('&nbsp;', ' ')->squish();
+                            $announcementTitle = $announcement->title ?: Str::limit($announcementText, 88);
+                        @endphp
+                        <article class="home-announcement-card wow fadeInUp" data-wow-delay="{{ 0.1 * $loop->iteration }}s">
+                            <div class="home-announcement-card__media">
+                                @if($announcement->image)
+                                    <x-responsive-image path="{{ $announcement->image }}" alt="{{ $announcementTitle }}" sizes="(max-width: 767px) 100vw, 220px" />
+                                @else
+                                    <span class="home-announcement-card__placeholder"><i class="fa fa-bullhorn"></i></span>
+                                @endif
+                            </div>
+                            <div class="home-announcement-card__body">
+                                <div class="home-announcement-card__meta">
+                                    <span class="home-announcement-card__label"><i class="fa fa-bullhorn"></i> Announcement</span>
+                                    <time datetime="{{ $announcement->created_at->toDateString() }}">{{ $announcement->created_at->format('d M Y') }}</time>
+                                </div>
+                                <h3>{{ $announcementTitle }}</h3>
+                                <p>{{ Str::limit($announcementText, 190) }}</p>
+                                <a href="{{ route('announcements.show', $announcement->id) }}" class="home-card-link">View announcement <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </article>
                     @endforeach
                 </div>
             </div>
+        </section>
+    @endif
 
-           <!-- Announcements Section -->
-<div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s">
-    <div class="alert alert-info text-center" role="alert">
-        <strong>ANNOUNCEMENTS</strong>
-    </div>
-    <div class="p-4">
-        @foreach($announcements as $announcement)
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            @if($announcement->image)
-                <img class="img-fluid mb-3" src="{{ asset($announcement->image) }}" alt="Announcement Image">
-            @endif
-            <p>{!! $announcement->description !!}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endforeach
-    </div>
-</div>
-        </div>
-    </div>
-</div>
-<!-- Events End -->
-
-    <!-- News Start -->
-<!-- Stories Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h6 class="section-title bg-white text-center text-primary px-3">Latest Stories</h6>
-            <p class="text-muted">Explore the latest stories and insights in the world of rugby in Malawi.</p>
-        </div>
-        <div class="row g-4">
-            @foreach($stories as $story)
-            <div class="col-lg-4 col-md-6">
-                <div class="news-item bg-light shadow-sm rounded">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid rounded-top" src="{{ asset($story->image) }}" alt="{{ $story->name }}">
-                        <div class="read-more-overlay position-absolute top-50 start-50 translate-middle">
-                            <a href="{{ route('stories.show', $story->id) }}" class="btn btn-primary px-4 py-2">Read More</a>
-                        </div>
+    @if($events->isNotEmpty())
+        <section class="home-section home-section--soft">
+            <div class="container">
+                <div class="home-section-heading">
+                    <div>
+                        <span class="home-eyebrow">Join us</span>
+                        <h2>Upcoming events</h2>
+                        <p>Take part in our next activities and community programmes.</p>
                     </div>
-                    <div class="p-4">
-                        <h5 class="mb-2">{{ $story->name }} : {{ $story->title }}</h5>
-                        <p>{!! Str::limit($story->description, 100) !!}</p> <!-- Limit description to 100 characters -->
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ route('stories.show', $story->id) }}" class="text-primary">Read More &raquo;</a>
-                            @if($story->url_link)
-                                <a href="{{ $story->url_link }}" target="_blank" class="text-secondary">Watch Video</a>
-                            @endif
-                        </div>
-                    </div>
+                    <a href="{{ route('events') }}" class="home-text-link">View all events <i class="fa fa-arrow-right"></i></a>
+                </div>
+                <div class="home-card-grid home-card-grid--three">
+                    @foreach($events as $event)
+                        <article class="home-event-card wow fadeInUp" data-wow-delay="{{ 0.1 * $loop->iteration }}s">
+                            <a href="{{ route('events.show', $event->id) }}" class="home-event-card__image">
+                                @if($event->image)
+                                    <x-responsive-image path="{{ $event->image }}" alt="{{ $event->title }}" sizes="(max-width: 767px) 100vw, 33vw" />
+                                @else
+                                    <span class="home-image-placeholder"><i class="fa fa-calendar-alt"></i></span>
+                                @endif
+                                <span class="home-event-card__date">{{ \Carbon\Carbon::parse($event->start_date)->format('d M') }}</span>
+                            </a>
+                            <div class="home-event-card__body">
+                                <span><i class="fa fa-map-marker-alt"></i> {{ $event->location }}</span>
+                                <h3><a href="{{ route('events.show', $event->id) }}">{{ $event->title }}</a></h3>
+                                <p>{{ Str::limit(strip_tags($event->description), 120) }}</p>
+                            </div>
+                        </article>
+                    @endforeach
                 </div>
             </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Stories End -->
-<!-- News End -->
+        </section>
+    @endif
 
+    @if($stories->isNotEmpty())
+        <section class="home-section home-section--soft home-stories">
+            <div class="container">
+                <div class="home-section-heading">
+                    <div>
+                        <span class="home-eyebrow">Real people, real progress</span>
+                        <h2>Stories that inspire</h2>
+                        <p>Meet the players and communities creating change through rugby and education.</p>
+                    </div>
+                    <a href="{{ route('stories') }}" class="home-text-link">Explore all stories <i class="fa fa-arrow-right"></i></a>
+                </div>
+                <div class="home-card-grid home-card-grid--stories">
+                    @foreach($stories as $story)
+                        <article class="home-story-card wow fadeInUp" data-wow-delay="{{ 0.1 * $loop->iteration }}s">
+                            <a href="{{ route('stories.show', $story->id) }}" class="home-story-card__image">
+                            <x-responsive-image path="{{ $story->image }}" alt="{{ $story->name }}" sizes="(max-width: 767px) 100vw, 33vw" />
+                            </a>
+                            <div class="home-story-card__body">
+                                <span class="home-card-meta">{{ $story->name }}</span>
+                                <h3><a href="{{ route('stories.show', $story->id) }}">{{ $story->title }}</a></h3>
+                                <p>{{ Str::limit(strip_tags($story->description), 145) }}</p>
+                                <div class="home-story-card__links">
+                                    <a href="{{ route('stories.show', $story->id) }}" class="home-card-link">Read story <i class="fa fa-arrow-right"></i></a>
+                                    @if($story->url_link && filter_var($story->url_link, FILTER_VALIDATE_URL))
+                                        <a href="{{ $story->url_link }}" target="_blank" rel="noopener" class="home-video-link"><i class="fa fa-play"></i> Watch</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <section class="home-cta">
+        <div class="container">
+            <div class="home-cta__inner">
+                <div>
+                    <span class="home-eyebrow home-eyebrow--light">Be part of the change</span>
+                    <h2>Help a young player stay in school and keep moving forward.</h2>
+                </div>
+                <a href="{{ route('support') }}" class="home-btn home-btn--white">Support our work <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+</main>
 @endsection

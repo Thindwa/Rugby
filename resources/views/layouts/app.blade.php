@@ -1,15 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+@php
+    $pageTitle = trim($__env->yieldContent('title')) ?: 'Rugby For Education | Education Through Sport in Malawi';
+    $pageDescription = trim($__env->yieldContent('meta_description')) ?: 'Rugby For Education helps talented young rugby players in Malawi stay in school, develop their potential and build brighter futures.';
+    $canonicalUrl = trim($__env->yieldContent('canonical')) ?: url()->current();
+    $socialImage = trim($__env->yieldContent('social_image')) ?: asset('img/logo.jpg');
+@endphp
+<html lang="en-MW">
 
 <head>
     <meta charset="utf-8">
-    <title>Malawi-Rugby</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <title>{{ $pageTitle }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ $pageDescription }}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Rugby For Education">
+    <meta name="theme-color" content="#111a36">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rugby For Education">
+    <meta property="og:locale" content="en_MW">
+    <meta property="og:title" content="{{ $pageTitle }}">
+    <meta property="og:description" content="{{ $pageDescription }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:image" content="{{ $socialImage }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDescription }}">
+    <meta name="twitter:image" content="{{ $socialImage }}">
+
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'Organization',
+            'name' => 'Rugby For Education',
+            'alternateName' => 'R4E',
+            'url' => url('/'),
+            'logo' => asset('img/logo.jpg'),
+            'description' => 'Rugby For Education helps talented young rugby players in Malawi stay in school and develop their potential through sport.',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'Kabwabwa Area 25 B',
+                'addressLocality' => 'Lilongwe',
+                'addressCountry' => 'MW',
+            ],
+            'email' => 'rugbyforeducation23@gmail.com',
+            'telephone' => '+265992816663',
+            'sameAs' => [
+                'https://www.facebook.com/people/Rugby-For-Education/100092776007978/',
+                'https://www.youtube.com/@R4E-z8p',
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+    @yield('schema')
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{ asset('img/favicon.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,7 +215,7 @@
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
     <script>
         jQuery("button.close").click(function (e) {

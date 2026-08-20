@@ -40,6 +40,11 @@ class AboutResource extends Resource
                 Forms\Components\Textarea::make('mission')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('support_url')
+                    ->label('Support / donation URL')
+                    ->url()
+                    ->default('https://www.paypal.com/paypalme/Rugby4Education')
+                    ->helperText('This link is used by the Support Us buttons across the website.'),
             ]);
     }
 

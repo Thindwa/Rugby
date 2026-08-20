@@ -1,85 +1,12 @@
 @extends('layouts.app')
 
+@section('title', $event->title . ' | Rugby For Education Events')
+@section('meta_description', Str::limit(strip_tags($event->description), 155))
+@section('social_image', asset('storage/' . $event->image))
+@section('schema')
+<script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@type' => 'Event', 'name' => $event->title, 'description' => Str::limit(strip_tags($event->description), 155), 'image' => asset('storage/' . $event->image), 'startDate' => \Carbon\Carbon::parse($event->start_date)->toAtomString(), 'endDate' => $event->end_date ? \Carbon\Carbon::parse($event->end_date)->toAtomString() : null, 'location' => ['@type' => 'Place', 'name' => $event->location, 'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Lilongwe', 'addressCountry' => 'MW']], 'organizer' => ['@type' => 'Organization', 'name' => 'Rugby For Education', 'url' => url('/')]], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+@endsection
+
 @section('content')
-
-<!-- Header Start -->
-<div class="container-fluid bg-primary py-5 mb-5 page-header">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h1 class="display-3 text-white animated slideInDown">{{ $event->title }}</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="{{ route('events') }}">Events</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">{{ $event->title }}</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Header End -->
-
-<!-- Single Event Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5">
-            <!-- Main Content -->
-            <div class="col-lg-8">
-                <div class="wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid rounded mb-4" src="{{ asset($event->image) }}" alt="{{ $event->title }}">
-                    <h2 class="mb-4">{{ $event->title }}</h2>
-                    <p class="mb-4">{!! $event->description !!}</p>
-                    <div class="row g-3 mb-4">
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fas fa-calendar-alt text-primary me-2"></i>Start Date: {{ \Carbon\Carbon::parse($event->start_date)->format('jS M Y') }}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fas fa-calendar-alt text-primary me-2"></i>End Date: {{ \Carbon\Carbon::parse($event->end_date)->format('jS M Y') }}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location: {{ $event->location }}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fas fa-info-circle text-primary me-2"></i>Status: {{ ucfirst($event->status) }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col-lg-4">
-                <div class="wow fadeInUp" data-wow-delay="0.3s">
-                    <!-- Other Events Section -->
-                    <div class="bg-light p-4 mb-4 rounded shadow-sm">
-                        <h4 class="mb-4">Other Events</h4>
-                        @foreach($otherEvents as $otherEvent)
-                            <div class="d-flex mb-3">
-                                <img class="flex-shrink-0 rounded" src="{{ asset($otherEvent->image) }}" alt="{{ $otherEvent->title }}" style="width: 100px; height: 70px; object-fit: cover;">
-                                <div class="ms-3">
-                                    <h6 class="mb-1">
-                                        <a href="{{ route('events.show', $otherEvent->id) }}" class="text-dark">{{ $otherEvent->title }}</a>
-                                    </h6>
-                                    <small class="text-muted">{{ \Carbon\Carbon::parse($otherEvent->start_date)->format('jS M Y') }}</small>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-                    <!-- Call to Action Section -->
-                    <div class="bg-primary text-white p-4 rounded shadow-sm">
-                        <h4 class="mb-4">Explore More</h4>
-                        <p class="mb-4">Discover more exciting events from our community.</p>
-                        <a href="{{ route('events') }}" class="btn btn-light">
-                            <i class="fas fa-calendar-alt me-2"></i> View All Events
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Single Event End -->
-
+<main class="detail-page"><div class="container"><nav class="content-breadcrumb detail-page__breadcrumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a><i class="fa fa-chevron-right"></i><a href="{{ route('events') }}">Events</a><i class="fa fa-chevron-right"></i><span>{{ $event->title }}</span></nav><div class="detail-layout"><article class="detail-article"><span class="home-eyebrow">Upcoming activity</span><h1>{{ $event->title }}</h1><x-responsive-image path="{{ $event->image }}" alt="{{ $event->title }}" class="detail-article__image" sizes="(max-width: 991px) 100vw, 70vw" /><div class="detail-facts"><div><i class="fa fa-calendar-alt"></i><span><small>Date</small>{{ \Carbon\Carbon::parse($event->start_date)->format('d M Y') }}@if($event->end_date) – {{ \Carbon\Carbon::parse($event->end_date)->format('d M Y') }}@endif</span></div><div><i class="fa fa-map-marker-alt"></i><span><small>Location</small>{{ $event->location }}</span></div></div><div class="detail-article__content">{!! $event->description !!}</div><a href="{{ route('events') }}" class="home-text-link"><i class="fa fa-arrow-left"></i> Back to all events</a></article><aside class="detail-aside"><div class="detail-aside__card"><span class="home-eyebrow">Keep exploring</span><h2>More events</h2>@forelse($otherEvents as $otherEvent)<a class="detail-related" href="{{ route('events.show', $otherEvent->id) }}"><img src="{{ asset('storage/'. $otherEvent->image) }}" alt="{{ $otherEvent->title }}" loading="lazy" decoding="async"><span><small>{{ \Carbon\Carbon::parse($otherEvent->start_date)->format('d M Y') }}</small><strong>{{ $otherEvent->title }}</strong></span></a>@empty<p>No other events yet.</p>@endforelse</div><div class="detail-aside__cta"><i class="fa fa-calendar-check"></i><h2>Bring someone along.</h2><p>Share this activity with your team, school or community.</p><a href="{{ route('contact') }}">Get in touch <i class="fa fa-arrow-right"></i></a></div></aside></div></div></main>
 @endsection

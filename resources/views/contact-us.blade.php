@@ -1,76 +1,12 @@
 @extends('layouts.app')
 
+@section('title', 'Contact Rugby For Education | Lilongwe, Malawi')
+@section('meta_description', 'Contact Rugby For Education in Lilongwe about player support, schools, partnerships, events and community programmes.')
+
 @section('content')
-
-<!-- Header Start -->
-<div class="container-fluid bg-primary py-5 mb-5 page-header">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h1 class="display-3 text-white animated slideInDown">Contact</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Header End -->
-
-<!-- Contact Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">Contact Us</h6>
-            <h1 class="mb-5">Get In Touch</h1>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="mb-4">For inquiries about Rugby For Education, or any other queries, feel free to contact us.</p>
-                <div class="d-flex align-items-center mb-3">
-                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                        <i class="fa fa-map-marker-alt text-white"></i>
-                    </div>
-                    <div class="ms-3">
-                        <h5 class="text-primary">Address</h5>
-                        <p class="mb-0">Kabwabwa
-Area 25 B
-Lilongwe.</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mb-3">
-                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                        <i class="fa fa-phone-alt text-white"></i>
-                    </div>
-                    <div class="ms-3">
-                        <h5 class="text-primary">Phone</h5>
-                        <p class="mb-0">+265 992 816 663 / +265 985 543 434</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                        <i class="fa fa-envelope-open text-white"></i>
-                    </div>
-                    <div class="ms-3">
-                        <h5 class="text-primary">Email</h5>
-                        <p class="mb-0">rugbyforeducation23@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-    @if($randomImage)
-        <img class="img-fluid rounded" src="{{ asset($randomImage->getUrl()) }}" alt="Random Image" style="width: 100%; height: 300px; object-fit: cover;">
-    @else
-        <p class="text-muted">No image available.</p>
-    @endif
-</div>
-        </div>
-    </div>
-</div>
-<!-- Contact End -->
-
+@php $headerImage = optional($randomImage)->getUrl() ?: asset('img/carousel-1.jpg'); @endphp
+<main class="content-page">
+    <header class="content-hero content-hero--compact" style="--content-hero-image: url('{{ $headerImage }}');"><div class="content-hero__overlay"></div><div class="container content-hero__inner"><nav class="content-breadcrumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a><i class="fa fa-chevron-right"></i><span>Contact</span></nav><span class="home-eyebrow home-eyebrow--light">We would love to hear from you</span><h1>Let’s work together.</h1><p>Have a question, partnership idea or player support enquiry? Get in touch with Rugby For Education.</p></div></header>
+    <section class="content-section content-section--soft"><div class="container"><div class="contact-layout"><div class="contact-panel"><span class="home-eyebrow">Contact details</span><h2>Start a conversation</h2><p>Whether you are a family, school, club, partner or supporter, we are here to listen and help where we can.</p><div class="contact-list"><a href="https://maps.google.com/?q=Kabwabwa+Area+25+B+Lilongwe" target="_blank" rel="noopener"><i class="fa fa-map-marker-alt"></i><span><strong>Visit us</strong>Kabwabwa, Area 25 B<br>Lilongwe, Malawi</span></a><a href="tel:+265992816663"><i class="fa fa-phone-alt"></i><span><strong>Call us</strong>+265 992 816 663<br>+265 985 543 434</span></a><a href="mailto:rugbyforeducation23@gmail.com"><i class="fa fa-envelope"></i><span><strong>Email us</strong>rugbyforeducation23@gmail.com</span></a></div><a href="{{ $supportUrl ?? 'https://www.paypal.com/paypalme/Rugby4Education' }}" target="_blank" rel="noopener noreferrer" class="home-btn home-btn--primary">Support our work <i class="fa fa-arrow-right"></i></a></div><div class="contact-image">@if($randomImage)<img src="{{ $randomImage->getUrl() }}" alt="Rugby For Education community activity">@else<div class="home-image-placeholder"><i class="fa fa-handshake"></i></div>@endif<div class="contact-image__caption"><span>Education. Opportunity. Community.</span><strong>Good things grow when we work together.</strong></div></div></div></div></section>
+</main>
 @endsection

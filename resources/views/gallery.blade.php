@@ -1,80 +1,14 @@
 @extends('layouts.app')
 
-<style>
-    .img-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.image-title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    font-size: 14px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.img-container:hover .image-title {
-    opacity: 1;
-}
-
-</style>
+@section('title', 'Gallery | Rugby For Education Malawi')
+@section('meta_description', 'Browse photos from Rugby For Education activities, schools, players and community programmes in Malawi.')
 
 @section('content')
-
-<!-- Hero Section -->
-<div class="container-fluid page-header py-5 mb-5">
-    <div class="container py-1">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">Resources</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="text-white" href="">Home</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Media Gallery</li>
-            </ol>
-        </nav>
-    </div>
-</div>
-
-<!-- Content Section -->
-<section id="" class="mb-5">
-    <div class="container">
-        <div class="row shadow">
-            <!-- Main content (Photo Gallery) -->
-            <div class="col-md-12 main-content">
-                <div class="mb-5 pt-4">
-                    <h3 class="page-heading">Photo Gallery</h3>
-                </div>
-
-                <!-- Gallery Section -->
-                <div class="row">
-                    <!-- Gallery Items -->
-                    @foreach ($images as $image)
-                        <div class="col-sm-4 mb-4 position-relative">
-                            <a href="{{ $image->getUrl() }}"
-                               class="d-block img-container"
-                               data-toggle="lightbox"
-                               data-gallery="example-gallery">
-                                <img src="{{ $image->getUrl() }}"
-                                     class="img-fluid rounded"
-                                     alt="{{ $image->alt ?? '' }}">
-                                <div class="image-title">
-                                    {{ $image->title ?? '' }}
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</section>
-
+@php $headerImage = optional($randomImage)->getUrl() ?: asset('img/carousel-2.jpg'); @endphp
+<main class="content-page">
+    <header class="content-hero content-hero--compact" style="--content-hero-image: url('{{ $headerImage }}');"><div class="content-hero__overlay"></div><div class="container content-hero__inner"><nav class="content-breadcrumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a><i class="fa fa-chevron-right"></i><span>Gallery</span></nav><span class="home-eyebrow home-eyebrow--light">A look at the journey</span><h1>Moments worth remembering.</h1><p>See the people, places and experiences behind Rugby For Education.</p></div></header>
+    <section class="content-section content-section--soft"><div class="container"><div class="content-section-heading"><div><span class="home-eyebrow">Photo gallery</span><h2>Life around the game</h2></div><p>Browse moments from our work in schools, on the pitch and in the community.</p></div>
+        @if($images->count())<div class="gallery-grid">@foreach($images as $image)<a href="{{ $image->getUrl() }}" class="gallery-tile" data-toggle="lightbox" data-gallery="r4e-gallery"><img src="{{ $image->getUrl() }}" alt="{{ $image->title ?? 'Rugby For Education activity' }}"><span>{{ $image->title ?? 'View image' }} <i class="fa fa-expand-alt"></i></span></a>@endforeach</div><div class="content-pagination">{{ $images->links('vendor.pagination.default') }}</div>@else<div class="content-empty"><i class="fa fa-images"></i><h2>The gallery is growing</h2><p>Photos from our activities will appear here soon.</p></div>@endif
+    </div></section>
+</main>
 @endsection

@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
+@section('title', 'News | Rugby For Education Malawi')
+@section('meta_description', 'News and updates from Rugby For Education, supporting education and rugby development in Malawi.')
 
 @section('content')
 
 
   <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container-fluid bg-primary py-5 mb-5 page-header"
+    style="background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('{{ $randomImage->getUrl() ?? asset($randomImage->getUrl()) }}');
+           background-position: center center;
+           background-repeat: no-repeat;
+           background-size: cover;">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">

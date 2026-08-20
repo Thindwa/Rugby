@@ -1,103 +1,171 @@
 @extends('layouts.app')
 
+@section('title', 'About Rugby For Education | Rugby and Education in Malawi')
+@section('meta_description', 'Learn how Rugby For Education connects education, rugby and community support to help young people in Malawi build brighter futures.')
+
 @section('content')
+@php
+    $heroImage = $randomImage ? $randomImage->getUrl() : asset('storage/' . $about->image);
+    $missionPoints = collect(preg_split('/(?:\r?\n|•|·|\|)+/', strip_tags($about->mission)))
+        ->map(fn ($point) => trim($point))
+        ->filter()
+        ->values();
+@endphp
 
-   <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">About Us</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-
-                            <li class="breadcrumb-item text-white active" aria-current="page">About</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+<main class="about-page">
+    <section class="about-page-hero" style="--about-hero-image: url('{{ $heroImage }}');">
+        <div class="about-page-hero__overlay"></div>
+        <div class="container about-page-hero__content">
+            <nav class="about-breadcrumb" aria-label="Breadcrumb">
+                <a href="{{ route('home') }}">Home</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">About us</span>
+            </nav>
+            <span class="about-eyebrow about-eyebrow--light">Our organisation</span>
+            <h1>Education and rugby.<br>One path forward.</h1>
+            <p>We help talented young rugby players stay in school, develop their potential and build brighter futures.</p>
         </div>
-    </div>
-    <!-- Header End -->
+    </section>
 
-<!-- About Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="{{ asset($about->image) }}" alt="Rugby Team" style="object-fit: cover;">
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                <h1 class="mb-4">{{ $about->title }}</h1>
-                <p class="mb-4">{!! $about->description !!}</p>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- About End -->
-
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-4">
-            <!-- Section 1: Support Your Local Rugby Club -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <!-- Add content here if needed -->
-            </div>
-            <!-- Section 2: Non-Profit Organization -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item text-center pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-hand-holding-heart text-primary mb-4"></i>
-                        <h5 class="mb-3">Vision</h5>
-                        <p>{{ $about->vision }}</p>
+    <section class="about-story-section">
+        <div class="container">
+            <div class="about-story-grid">
+                <div class="about-story-media wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="about-story-media__accent" aria-hidden="true"></div>
+                    <x-responsive-image path="{{ $about->image }}" alt="Rugby For Education supporting young players" sizes="(max-width: 991px) 100vw, 50vw" />
+                    <div class="about-story-media__badge">
+                        <i class="fa fa-book-open" aria-hidden="true"></i>
+                        <div>
+                            <strong>Education first</strong>
+                            <span>Opportunity on and off the field</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Section 3: Donate Today -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item text-center pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-donate text-primary mb-4"></i>
-                        <h5 class="mb-3">Mission</h5>
-                        <p>{{ $about->mission }}</p>
+                <div class="about-story-copy wow fadeInUp" data-wow-delay="0.2s">
+                    <span class="about-eyebrow">Who we are</span>
+                    <h2>{{ $about->title }}</h2>
+                    <div class="about-rich-text">{!! $about->description !!}</div>
+                    <div class="about-focus-list" aria-label="Our focus areas">
+                        <span><i class="fa fa-check" aria-hidden="true"></i> Education access</span>
+                        <span><i class="fa fa-check" aria-hidden="true"></i> Player development</span>
+                        <span><i class="fa fa-check" aria-hidden="true"></i> Community support</span>
                     </div>
+                    <a href="{{ route('contact') }}" class="about-text-link">Work with our organisation <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
-            <!-- Section 4: Announcements -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <!-- Add content here if needed -->
-            </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- Management Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp pb-5" data-wow-delay="0.1s">
-            <h2 class="section-title bg-white text-center text-primary px-3">Top Management</h2>
-        </div>
-        <div class="row g-4 justify-content-center">
-            @foreach($management as $member)
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item bg-light text-center p-4">
-                    <div class="position-relative overflow-hidden mb-4">
-                        <img class="img-fluid rounded-circle" src="{{ asset($member->image) }}" alt="{{ $member->name }}">
-                    </div>
-                    <h5 class="mb-1">{{ $member->name }}</h5>
-                    <p class="text-primary">{{ $member->position }}</p>
-                    <p class="text-muted">{!! $member->description !!}</p>
+    <section class="about-purpose-section">
+        <div class="container">
+            <div class="about-section-heading">
+                <div>
+                    <span class="about-eyebrow">What guides us</span>
+                    <h2>Purpose with a clear direction</h2>
                 </div>
+                <p>Our vision defines the future we want to see. Our mission explains how we work towards it every day.</p>
             </div>
-            @endforeach
+            <div class="about-purpose-grid">
+                <article class="about-purpose-card wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="about-purpose-card__icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                    <span>Our vision</span>
+                    <h3>A fair chance for every talented young player</h3>
+                    <p>{{ $about->vision }}</p>
+                </article>
+                <article class="about-purpose-card about-purpose-card--dark wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="about-purpose-card__icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></div>
+                    <span>Our mission</span>
+                    <h3>Education and sport working together</h3>
+                    <ul class="about-mission-list">
+                        @foreach($missionPoints as $point)
+                            <li><i class="fa fa-check" aria-hidden="true"></i><span>{{ $point }}</span></li>
+                        @endforeach
+                    </ul>
+                </article>
+            </div>
         </div>
-    </div>
-</div>
-<!-- Management End -->
+    </section>
 
+    <section class="about-priorities-section">
+        <div class="container">
+            <div class="about-section-heading about-section-heading--center">
+                <div>
+                    <span class="about-eyebrow">How we create opportunity</span>
+                    <h2>Support that goes beyond the game</h2>
+                </div>
+                <p>We connect education, sport and community support so young people can keep learning and growing.</p>
+            </div>
+            <div class="about-priorities-grid">
+                <article>
+                    <span>01</span>
+                    <i class="fa fa-school" aria-hidden="true"></i>
+                    <h3>Keep players in school</h3>
+                    <p>We help remove practical barriers to education, from school fees and examinations to learning materials.</p>
+                </article>
+                <article>
+                    <span>02</span>
+                    <i class="fa fa-running" aria-hidden="true"></i>
+                    <h3>Develop young talent</h3>
+                    <p>Rugby builds confidence, discipline and teamwork while giving young players a positive place to belong.</p>
+                </article>
+                <article>
+                    <span>03</span>
+                    <i class="fa fa-people-carry" aria-hidden="true"></i>
+                    <h3>Strengthen communities</h3>
+                    <p>We work with families, clubs, schools and partners to create support that lasts beyond a single season.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-leadership-section" id="leadership">
+        <div class="container">
+            <div class="about-section-heading">
+                <div>
+                    <span class="about-eyebrow">The people behind the work</span>
+                    <h2>Leadership and advisory team</h2>
+                </div>
+                <p>Meet the people guiding Rugby For Education and supporting its work in the community.</p>
+            </div>
+            <div class="about-team-grid">
+                @foreach($management as $member)
+                    @php
+                        $plainBiography = trim(preg_replace('/\s+/', ' ', strip_tags($member->description)));
+                    @endphp
+                    <article class="about-team-card wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="about-team-card__media">
+                            <x-responsive-image path="{{ ltrim($member->image, '/') }}" alt="{{ $member->name }}, {{ $member->position }}" sizes="(max-width: 991px) 100vw, 33vw" />
+                            <span>{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                        </div>
+                        <div class="about-team-card__body">
+                            <span class="about-team-card__role">{{ $member->position }}</span>
+                            <h3>{{ $member->name }}</h3>
+                            <div class="about-team-description">
+                                <p>{{ \Illuminate\Support\Str::limit($plainBiography, 180) }}</p>
+                                @if(strlen($plainBiography) > 180)
+                                    <details class="about-team-profile">
+                                        <summary>Read full profile <i class="fa fa-plus" aria-hidden="true"></i></summary>
+                                        <div>{!! $member->description !!}</div>
+                                    </details>
+                                @endif
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="about-cta-section">
+        <div class="container">
+            <div class="about-cta-panel">
+                <div>
+                    <span class="about-eyebrow about-eyebrow--light">Be part of the change</span>
+                    <h2>Help a young player keep learning and moving forward.</h2>
+                </div>
+                <a href="{{ route('support') }}" class="about-cta-button">Support our work <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </section>
+</main>
 @endsection
