@@ -1103,24 +1103,26 @@
 }
 
 .home-cta {
-    padding: 90px 0;
-    background:
-        linear-gradient(110deg, rgba(17, 26, 54, .97), rgba(17, 26, 54, .88)),
-        url('../img/carousel-2.jpg') center/cover;
+    padding: 110px 0;
+    background: #fff;
 }
 
 .home-cta__inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 45px;
+    gap: 70px;
+    padding: 72px clamp(40px, 7vw, 95px);
+    border-radius: 28px;
+    color: #fff;
+    background: linear-gradient(120deg, #101a3a, #17254d);
 }
 
 .home-cta h2 {
     max-width: 780px;
-    margin: 12px 0 0;
+    margin: 22px 0 0;
     color: #fff;
-    font-size: clamp(2rem, 3.6vw, 3.45rem);
+    font-size: clamp(2.3rem, 4vw, 4rem);
     line-height: 1.12;
 }
 
@@ -1219,6 +1221,11 @@
     .home-cta__inner {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .home-cta__inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
     .home-section-heading {
@@ -2419,8 +2426,8 @@
 
 .site-footer__main {
     display: grid;
-    grid-template-columns: 1.15fr .65fr 1fr;
-    gap: clamp(45px, 6vw, 95px);
+    grid-template-columns: minmax(260px, 1.25fr) minmax(220px, 1fr) minmax(150px, .75fr) minmax(230px, 1.05fr);
+    gap: clamp(28px, 4vw, 65px);
     padding: 78px 0 58px;
 }
 

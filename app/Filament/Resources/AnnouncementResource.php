@@ -23,6 +23,10 @@ class AnnouncementResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('title')
+                    ->label('Announcement title')
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
                     ->disk('public')
                     ->directory('announcements')
@@ -38,6 +42,9 @@ class AnnouncementResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable()
+                    ->limit(60),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
