@@ -2314,7 +2314,6 @@
     background-image: var(--content-hero-image), url('../img/carousel-2.jpg');
 }
 
-.support-intro,
 .support-newsletter {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr);
@@ -2323,7 +2322,6 @@
     margin-bottom: 48px;
 }
 
-.support-intro h2,
 .support-newsletter h2 {
     margin: 13px 0 0;
     color: var(--home-navy, #111a36);
@@ -2331,21 +2329,12 @@
     line-height: 1.05;
 }
 
-.support-intro > p,
 .support-newsletter p { margin: 0; color: var(--home-muted, #687187); font-size: 1.05rem; line-height: 1.8; }
-
-.support-impact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.support-impact-grid article { padding: 32px; border: 1px solid #dfebed; border-radius: 14px; background: #fff; box-shadow: 0 10px 32px rgba(24, 43, 68, .05); }
-.support-impact-grid i { color: var(--home-teal-dark, #078a99); font-size: 1.6rem; }
-.support-impact-grid h3 { margin: 18px 0 10px; color: var(--home-navy, #111a36); font-size: 1.3rem; }
-.support-impact-grid p { margin: 0; color: var(--home-muted, #687187); line-height: 1.7; }
 
 .support-give-section { padding: 105px 0; background: var(--home-navy, #111a36); }
 .support-give-card { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: 60px; align-items: center; color: #fff; }
 .support-give-card h2 { max-width: 700px; margin: 14px 0; color: #fff; font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1.02; }
 .support-give-card p { max-width: 650px; color: rgba(255,255,255,.72); line-height: 1.8; }
-.support-amounts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-.support-amounts span { padding: 10px 18px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; color: #fff; font-weight: 800; }
 .support-give-card__action { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; padding: 30px; border: 1px solid rgba(255,255,255,.16); border-radius: 16px; background: rgba(255,255,255,.07); }
 .support-give-card__action > i { color: #5adce7; font-size: 2.3rem; }
 .support-give-card__action strong { color: #fff; font-size: 1.25rem; }
@@ -2371,7 +2360,7 @@
 .newsletter-form button { width: 48px; border: 1px solid #53dae7; border-radius: 0 6px 6px 0; background: #53dae7; color: #111a36; }
 .newsletter-form__success { color: #75e3bb !important; font-size: .88rem; }
 
-@media (max-width: 991.98px) { .support-intro, .support-newsletter, .support-give-card { grid-template-columns: 1fr; gap: 32px; } .support-impact-grid { grid-template-columns: 1fr; } .site-footer__main { grid-template-columns: repeat(2, minmax(0, 1fr)); } .site-footer__newsletter { grid-column: 1 / -1; } }
+@media (max-width: 991.98px) { .support-newsletter, .support-give-card { grid-template-columns: 1fr; gap: 32px; } .site-footer__main { grid-template-columns: repeat(2, minmax(0, 1fr)); } .site-footer__newsletter { grid-column: 1 / -1; } }
 @media (max-width: 575.98px) { .support-give-section { padding: 75px 0; } .support-give-card__action { padding: 24px; } }
 @media (max-width: 767.98px) { .home-page .home-hero__slide > .responsive-image { height: 640px; } .home-about__media > .responsive-image, .home-about__media > .responsive-image img { min-height: 390px; } }
 
