@@ -21,8 +21,8 @@
     $smallUrl = asset('storage/' . $smallPath);
     $mediumUrl = asset('storage/' . $mediumPath);
     $hasWebp = in_array($extension, ['jpg', 'jpeg', 'png']) && is_file(storage_path('app/public/' . $webpPath));
-    $hasSmall = in_array($extension, ['jpg', 'jpeg', 'png']) && is_file(storage_path('app/public/' . $smallPath));
-    $hasMedium = in_array($extension, ['jpg', 'jpeg', 'png']) && is_file(storage_path('app/public/' . $mediumPath));
+    $hasSmall = in_array($extension, ['jpg', 'jpeg', 'png', 'webp']) && is_file(storage_path('app/public/' . $smallPath));
+    $hasMedium = in_array($extension, ['jpg', 'jpeg', 'png', 'webp']) && is_file(storage_path('app/public/' . $mediumPath));
     $webpSrcset = collect([
         $hasSmall ? $smallUrl . ' 640w' : null,
         $hasMedium ? $mediumUrl . ' 1200w' : null,
