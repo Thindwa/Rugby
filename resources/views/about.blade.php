@@ -5,7 +5,9 @@
 
 @section('content')
 @php
-    $heroImage = $randomImage ? ($randomImage->hasWebpVariant() ? $randomImage->getWebpUrl() : $randomImage->getUrl()) : asset('storage/' . $about->image);
+    $heroImage = $randomImage
+        ? asset('storage/' . ($randomImage->hasWebpVariant() ? $randomImage->getWebpShortPath() : $randomImage->getShortPath()))
+        : asset('storage/' . $about->image);
     $missionPoints = collect(preg_split('/(?:\r?\n|•|·|\|)+/', strip_tags($about->mission)))
         ->map(fn ($point) => trim($point))
         ->filter()

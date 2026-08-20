@@ -4,7 +4,7 @@
 @section('meta_description', 'Discover upcoming Rugby For Education rugby, school and community events in Malawi.')
 
 @section('content')
-@php $headerImage = $randomImage ? ($randomImage->hasWebpVariant() ? $randomImage->getWebpUrl() : $randomImage->getUrl()) : asset('img/carousel-1.jpg'); @endphp
+@php $headerImage = $randomImage ? asset('storage/' . ($randomImage->hasWebpVariant() ? $randomImage->getWebpShortPath() : $randomImage->getShortPath())) : asset('img/carousel-1.jpg'); @endphp
 
 <main class="content-page">
     <header class="content-hero content-hero--compact" style="--content-hero-image: url('{{ $headerImage }}');"><div class="content-hero__overlay"></div><div class="container content-hero__inner"><nav class="content-breadcrumb" aria-label="Breadcrumb"><a href="{{ route('home') }}">Home</a><i class="fa fa-chevron-right"></i><span>Events</span></nav><span class="home-eyebrow home-eyebrow--light">Join the movement</span><h1>Events that bring people together.</h1><p>See what is happening across our rugby, education and community programmes.</p></div></header>

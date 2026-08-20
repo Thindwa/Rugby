@@ -8,7 +8,7 @@
 
   <!-- Header Start -->
     <div class="container-fluid bg-primary py-5 mb-5 page-header"
-    style="background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('{{ $randomImage->getUrl() ?? asset($randomImage->getUrl()) }}');
+    style="background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('{{ $randomImage ? asset('storage/' . ($randomImage->hasWebpVariant() ? $randomImage->getWebpShortPath() : $randomImage->getShortPath())) : asset('img/carousel-1.jpg') }}');
            background-position: center center;
            background-repeat: no-repeat;
            background-size: cover;">

@@ -4,7 +4,7 @@
 @section('meta_description', 'Read stories from Rugby For Education players, families and community partners across Malawi.')
 
 @section('content')
-@php $headerImage = $randomImage ? ($randomImage->hasWebpVariant() ? $randomImage->getWebpUrl() : $randomImage->getUrl()) : asset('img/carousel-2.jpg'); @endphp
+@php $headerImage = $randomImage ? asset('storage/' . ($randomImage->hasWebpVariant() ? $randomImage->getWebpShortPath() : $randomImage->getShortPath())) : asset('img/carousel-2.jpg'); @endphp
 
 <main class="content-page">
     <header class="content-hero" style="--content-hero-image: url('{{ $headerImage }}');">
