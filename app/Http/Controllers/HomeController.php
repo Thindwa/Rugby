@@ -48,7 +48,9 @@ class HomeController extends Controller
 
     public function support()
     {
-        return view('support');
+        $randomImage = Image::query()->inRandomOrder()->first();
+
+        return view('support', compact('randomImage'));
     }
 
     public function subscribe(Request $request)

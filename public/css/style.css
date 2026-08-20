@@ -2331,7 +2331,7 @@
 
 .support-newsletter p { margin: 0; color: var(--home-muted, #687187); font-size: 1.05rem; line-height: 1.8; }
 
-.support-give-section { padding: 105px 0; background: var(--home-navy, #111a36); }
+.support-give-section { padding: 92px 0 108px; border-top: 1px solid rgba(90, 220, 231, .2); background: var(--home-navy, #111a36); }
 .support-give-card { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: 60px; align-items: center; color: #fff; }
 .support-give-card h2 { max-width: 700px; margin: 14px 0; color: #fff; font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1.02; }
 .support-give-card p { max-width: 650px; color: rgba(255,255,255,.72); line-height: 1.8; }
