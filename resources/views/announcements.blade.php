@@ -5,7 +5,7 @@
 
 @section('content')
 @php
-    $headerImage = optional($randomImage)->getUrl() ?: asset('img/carousel-1.jpg');
+    $headerImage = $randomImage ? ($randomImage->hasWebpVariant() ? $randomImage->getWebpUrl() : $randomImage->getUrl()) : asset('img/carousel-1.jpg');
 @endphp
 
 <header class="announcement-page-hero" style="background-image: linear-gradient(rgba(16, 27, 56, .88), rgba(16, 27, 56, .88)), url('{{ $headerImage }}');">
