@@ -33,8 +33,7 @@ class HomeController extends Controller
     {
         // Fetch the About data (assuming there's only one entry)
         $about = About::first();
-         $images = Image::all();
-        $randomImage = $images->isEmpty() ? null : $images->random();
+        $randomImage = Image::query()->inRandomOrder()->first();
         $management = Management::all();
 
         // Pass the data to the view
@@ -43,9 +42,7 @@ class HomeController extends Controller
 
     public function contactUs()
     {
-        // Fetch all images
-        $images = Image::all();
-        $randomImage = $images->isEmpty() ? null : $images->random();
+        $randomImage = Image::query()->inRandomOrder()->first();
         return view('contact-us', compact('randomImage'));
     }
 
@@ -86,8 +83,7 @@ class HomeController extends Controller
             ->whereDate('start_date', '>=', today())
             ->orderBy('start_date')
             ->get();
-        $images = Image::all();
-        $randomImage = $images->isEmpty() ? null : $images->random();
+        $randomImage = Image::query()->inRandomOrder()->first();
 
         return view('events', compact('events', 'randomImage'));
     }
@@ -95,8 +91,7 @@ class HomeController extends Controller
     public function announcements()
     {
         $announcements = Announcement::latest()->get();
-        $images = Image::all();
-        $randomImage = $images->isEmpty() ? null : $images->random();
+        $randomImage = Image::query()->inRandomOrder()->first();
 
         return view('announcements', compact('announcements', 'randomImage'));
     }
@@ -116,8 +111,7 @@ class HomeController extends Controller
         // Fetch the event by ID
         $event = Event::findOrFail($id);
         $otherEvents = Event::where('id', '!=', $id)->latest()->take(5)->get();
-         $images = Image::all();
-        $randomImage = $images->isEmpty() ? null : $images->random();
+        $randomImage = Image::query()->inRandomOrder()->first();
         return view('event-single', compact('event', 'otherEvents', 'randomImage'));
     }
 
@@ -132,16 +126,14 @@ class HomeController extends Controller
     public function stories()
     {
         $stories = Story::latest()->get();
-         $images = Image::all();
-        $randomImage = $images->isEmpty() ? null : $images->random();
+        $randomImage = Image::query()->inRandomOrder()->first();
         return view('stories', compact('stories', 'randomImage'));
     }
   public function showStory($id)
 {
     $story = Story::findOrFail($id);
     $otherStories = Story::where('id', '!=', $id)->latest()->take(5)->get();
-     $images = Image::all();
-        $randomImage = $images->isEmpty() ? null : $images->random();
+    $randomImage = Image::query()->inRandomOrder()->first();
     return view('story-single', compact('story', 'otherStories', 'randomImage'));
   }
 
