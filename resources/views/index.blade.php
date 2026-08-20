@@ -4,6 +4,12 @@
 @section('meta_description', 'Rugby For Education supports talented young rugby players in Malawi with education, player development and community opportunity.')
 
 @section('content')
+@php
+    $missionPoints = collect(preg_split('/(?:\r?\n|•|·|\|)+/', strip_tags($about->mission ?? '')))
+        ->map(fn ($point) => trim($point))
+        ->filter()
+        ->values();
+@endphp
 <main class="home-page">
     <section class="home-hero" aria-label="Featured stories">
         <div class="owl-carousel header-carousel home-hero__carousel">
@@ -60,7 +66,11 @@
                     <div>
                         <span>Our mission</span>
                         <h2>Education and sport working together</h2>
-                        <p>{{ $about->mission }}</p>
+                        <ul class="home-mission-list">
+                            @foreach($missionPoints as $point)
+                                <li><i class="fa fa-check" aria-hidden="true"></i><span>{{ $point }}</span></li>
+                            @endforeach
+                        </ul>
                     </div>
                 </article>
             </div>
